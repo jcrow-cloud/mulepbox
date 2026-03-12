@@ -3,7 +3,7 @@
   "type": "REST",
   "metaData": {
     "category": "custom",
-    "icon": "public/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/public/icon.png",
     "isConfigured": false,
     "configurationDisabled": false,
     "configOnDrop": true
@@ -66,13 +66,14 @@
     }
   },
   "configurationArguments": {
-    "save":    { "url": "{{BASE_URL}}/save" },
-    "publish": { "url": "{{BASE_URL}}/publish" },
-    "validate":{ "url": "{{BASE_URL}}/validate" },
-    "stop":    { "url": "{{BASE_URL}}/stop" }
+    "save":    { "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity/save" },
+    "publish": { "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity/publish" },
+    "validate":{ "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity/validate" },
+    "stop":    { "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity/stop" }
   },
   "userInterfaces": {
-    "configModal": { "height": 320, "width": 520, "url": "{{BASE_URL}}/public/index.html" }
+    "configModal": { "height": 320, "width": 520, "url": "https://jcrow-cloud.github.io/mulepbox/public/index.html" }
   },
   "schema": { "arguments": {} }
+
 }
