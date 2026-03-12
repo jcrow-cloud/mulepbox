@@ -1,0 +1,78 @@
+{
+  "workflowApiVersion": "1.1",
+  "type": "REST",
+  "metaData": {
+    "category": "custom",
+    "icon": "public/icon.png",
+    "isConfigured": false,
+    "configurationDisabled": false,
+    "configOnDrop": true
+  },
+  "lang": {
+    "en-US": {
+      "name": "PauBox Send",
+      "description": "Send Execute payloads to MuleSoft (Template ID + inline HTML + all DE fields)"
+    }
+  },
+  "arguments": {
+    "executionMode": "Synchronous",
+    "execute": {
+      "inArguments": [
+        {
+          "templateId": "{{Interaction.PauBoxSend.templateId}}",
+          "deName": "{{Interaction.PauBoxSend.deName}}",
+          "subjectLine": "{{Interaction.PauBoxSend.subjectLine}}",
+
+          "subscriberKey": "{{Contact.Attribute.<DE>.subscriberKey}}",
+          "guestId": "{{Contact.Attribute.<DE>.guestId}}",
+          "prsProfileId": "{{Contact.Attribute.<DE>.prsProfileId}}",
+          "firstName": "{{Contact.Attribute.<DE>.firstName}}",
+          "email": "{{Contact.Attribute.<DE>.email}}",
+          "phoneNumber": "{{Contact.Attribute.<DE>.phoneNumber}}",
+          "emailPrereregisterUrl": "{{Contact.Attribute.<DE>.emailPrereregisterUrl}}",
+          "smsPrereregisterUrl": "{{Contact.Attribute.<DE>.smsPrereregisterUrl}}",
+          "state": "{{Contact.Attribute.<DE>.state}}",
+          "confirmationCode": "{{Contact.Attribute.<DE>.confirmationCode}}",
+          "appointmentStatus": "{{Contact.Attribute.<DE>.appointmentStatus}}",
+          "appointmentType": "{{Contact.Attribute.<DE>.appointmentType}}",
+          "appointmentDateTime": "{{Contact.Attribute.<DE>.appointmentDateTime}}",
+          "appointmentTimeZone": "{{Contact.Attribute.<DE>.appointmentTimeZone}}",
+          "appointmentSMSOptin": "{{Contact.Attribute.<DE>.appointmentSMSOptin}}",
+          "address_1": "{{Contact.Attribute.<DE>.address_1}}",
+          "address_2": "{{Contact.Attribute.<DE>.address_2}}",
+          "city": "{{Contact.Attribute.<DE>.city}}",
+          "zip": "{{Contact.Attribute.<DE>.zip}}",
+          "apptDeepLink": "{{Contact.Attribute.<DE>.apptDeepLink}}",
+          "paymentOOP": "{{Contact.Attribute.<DE>.paymentOOP}}",
+          "qrCode": "{{Contact.Attribute.<DE>.qrCode}}",
+          "reasonForVisit": "{{Contact.Attribute.<DE>.reasonForVisit}}",
+          "siteCode": "{{Contact.Attribute.<DE>.siteCode}}",
+          "partnerName": "{{Contact.Attribute.<DE>.partnerName}}",
+          "eorderAppointment": "{{Contact.Attribute.<DE>.eorderAppointment}}",
+          "confirmAppointmentURL": "{{Contact.Attribute.<DE>.confirmAppointmentURL}}",
+          "appointmentConfirmedFlag": "{{Contact.Attribute.<DE>.appointmentConfirmedFlag}}",
+          "outstandingBalance": "{{Contact.Attribute.<DE>.outstandingBalance}}",
+          "calendarLink": "{{Contact.Attribute.<DE>.calendarLink}}",
+          "appointmentEmailOptin": "{{Contact.Attribute.<DE>.appointmentEmailOptin}}",
+          "apptDeepLinkForModify": "{{Contact.Attribute.<DE>.apptDeepLinkForModify}}",
+          "apptDeepLinkForCancel": "{{Contact.Attribute.<DE>.apptDeepLinkForCancel}}",
+          "isApprovedDomain": "{{Contact.Attribute.<DE>.isApprovedDomain}}"
+        }
+      ],
+      "outArguments": [],
+      "timeout": 60000,
+      "retryCount": 3,
+      "retryDelay": 1000
+    }
+  },
+  "configurationArguments": {
+    "save":    { "url": "{{BASE_URL}}/save" },
+    "publish": { "url": "{{BASE_URL}}/publish" },
+    "validate":{ "url": "{{BASE_URL}}/validate" },
+    "stop":    { "url": "{{BASE_URL}}/stop" }
+  },
+  "userInterfaces": {
+    "configModal": { "height": 320, "width": 520, "url": "{{BASE_URL}}/public/index.html" }
+  },
+  "schema": { "arguments": {} }
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>PauBox Send</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: Segoe UI, Arial, sans-serif; margin: 16px; }
+    .row { margin-bottom: 12px; }
+    label { display:block; font-weight:600; margin-bottom:6px; }
+    input[type=text]{ width:100%; padding:8px; }
+    .hint{ color:#666; font-size:12px; }
+    .actions { margin-top: 16px; }
+    button { padding:8px 14px; }
+  </style>
+</head>
+<body>
+  <h2>PauBox Send</h2>
+
+  <div class="row">
+    <label for="templateId">Template ID</label>
+    <input type="text" id="templateId" placeholder="e.g., 123 or a GUID" />
+  </div>
+
+  <div class="row">
+    <label for="deName">DE Name</label>
+    <input type="text" id="deName" placeholder="e.g., QuestAppointments" />
+    <div class="hint">Must match the Journey Entry Source Data Extension name.</div>
+  </div>
+
+  <div class="row">
+    <label for="subjectLine">Subject Line</label>
+    <input type="text" id="subjectLine" placeholder="e.g., Your upcoming appointment" />
+  </div>
+
+  <div class="actions">
+    <button id="btnSave">Save</button>
+  </div>
+
+  <!-- Postmonger (required by Journey Builder) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/postmonger/1.0.17/postmonger.min.js"></script>
+  <!-- Your activity UI logic -->
+  <script src="/public/customActivity.js"></script>
+</body>
+</html>
