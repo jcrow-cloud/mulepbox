@@ -1,6 +1,7 @@
 {
   "workflowApiVersion": "1.1",
   "type": "REST",
+
   "metaData": {
     "category": "custom",
     "icon": "https://jcrow-cloud.github.io/mulepbox/public/icon.png",
@@ -8,12 +9,14 @@
     "configurationDisabled": false,
     "configOnDrop": true
   },
+
   "lang": {
     "en-US": {
       "name": "PauBox Send",
       "description": "Send Execute payloads to MuleSoft (Template ID + inline HTML + all DE fields)"
     }
   },
+
   "arguments": {
     "executionMode": "Synchronous",
     "execute": {
@@ -62,18 +65,44 @@
       "outArguments": [],
       "timeout": 60000,
       "retryCount": 3,
-      "retryDelay": 1000
+      "retryDelay": 1000,
+
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "useJwt": true,
+      "customerKey": "PAUBOX_SFMC_JWT"
     }
   },
-  "configurationArguments": {
-    "save":    { "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity/save" },
-    "publish": { "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity/publish" },
-    "validate":{ "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity/validate" },
-    "stop":    { "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity/stop" }
-  },
-  "userInterfaces": {
-    "configModal": { "height": 320, "width": 520, "url": "https://jcrow-cloud.github.io/mulepbox/public/index.html" }
-  },
-  "schema": { "arguments": {} }
 
+  "configurationArguments": {
+    "save": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "useJwt": true,
+      "customerKey": "PAUBOX_SFMC_JWT"
+    },
+    "validate": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "useJwt": true,
+      "customerKey": "PAUBOX_SFMC_JWT"
+    },
+    "publish": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "useJwt": true,
+      "customerKey": "PAUBOX_SFMC_JWT"
+    },
+    "stop": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "useJwt": true,
+      "customerKey": "PAUBOX_SFMC_JWT"
+    }
+  },
+
+  "userInterfaces": {
+    "configModal": {
+      "height": 320,
+      "width": 520,
+      "url": "https://jcrow-cloud.github.io/mulepbox/public/index.html"
+    }
+  },
+
+  "schema": { "arguments": {} }
 }
