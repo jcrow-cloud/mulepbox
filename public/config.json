@@ -1,108 +1,62 @@
 {
   "workflowApiVersion": "1.1",
-  "type": "REST",
-
   "metaData": {
+    "icon": "images/icon.png",
     "category": "custom",
-    "icon": "https://jcrow-cloud.github.io/mulepbox/public/icon.png",
-    "isConfigured": false,
-    "configurationDisabled": false,
     "configOnDrop": true
   },
-
+  "type": "REST",
   "lang": {
     "en-US": {
-      "name": "PauBox Send",
-      "description": "Send Execute payloads to MuleSoft (Template ID + inline HTML + all DE fields)"
+      "name": "Paubox Templated Mail (Mule)",
+      "description": "Sends a Paubox dynamic templated email via Mule using Journey Entry DE fields"
     }
   },
-
   "arguments": {
-    "executionMode": "Synchronous",
     "execute": {
-      "inArguments": [
-        {
-          "templateId": "{{Interaction.PauBoxSend.templateId}}",
-          "deName": "{{Interaction.PauBoxSend.deName}}",
-          "subjectLine": "{{Interaction.PauBoxSend.subjectLine}}",
-
-          "subscriberKey": "{{Contact.Attribute.<DE>.subscriberKey}}",
-          "guestId": "{{Contact.Attribute.<DE>.guestId}}",
-          "prsProfileId": "{{Contact.Attribute.<DE>.prsProfileId}}",
-          "firstName": "{{Contact.Attribute.<DE>.firstName}}",
-          "email": "{{Contact.Attribute.<DE>.email}}",
-          "phoneNumber": "{{Contact.Attribute.<DE>.phoneNumber}}",
-          "emailPrereregisterUrl": "{{Contact.Attribute.<DE>.emailPrereregisterUrl}}",
-          "smsPrereregisterUrl": "{{Contact.Attribute.<DE>.smsPrereregisterUrl}}",
-          "state": "{{Contact.Attribute.<DE>.state}}",
-          "confirmationCode": "{{Contact.Attribute.<DE>.confirmationCode}}",
-          "appointmentStatus": "{{Contact.Attribute.<DE>.appointmentStatus}}",
-          "appointmentType": "{{Contact.Attribute.<DE>.appointmentType}}",
-          "appointmentDateTime": "{{Contact.Attribute.<DE>.appointmentDateTime}}",
-          "appointmentTimeZone": "{{Contact.Attribute.<DE>.appointmentTimeZone}}",
-          "appointmentSMSOptin": "{{Contact.Attribute.<DE>.appointmentSMSOptin}}",
-          "address_1": "{{Contact.Attribute.<DE>.address_1}}",
-          "address_2": "{{Contact.Attribute.<DE>.address_2}}",
-          "city": "{{Contact.Attribute.<DE>.city}}",
-          "zip": "{{Contact.Attribute.<DE>.zip}}",
-          "apptDeepLink": "{{Contact.Attribute.<DE>.apptDeepLink}}",
-          "paymentOOP": "{{Contact.Attribute.<DE>.paymentOOP}}",
-          "qrCode": "{{Contact.Attribute.<DE>.qrCode}}",
-          "reasonForVisit": "{{Contact.Attribute.<DE>.reasonForVisit}}",
-          "siteCode": "{{Contact.Attribute.<DE>.siteCode}}",
-          "partnerName": "{{Contact.Attribute.<DE>.partnerName}}",
-          "eorderAppointment": "{{Contact.Attribute.<DE>.eorderAppointment}}",
-          "confirmAppointmentURL": "{{Contact.Attribute.<DE>.confirmAppointmentURL}}",
-          "appointmentConfirmedFlag": "{{Contact.Attribute.<DE>.appointmentConfirmedFlag}}",
-          "outstandingBalance": "{{Contact.Attribute.<DE>.outstandingBalance}}",
-          "calendarLink": "{{Contact.Attribute.<DE>.calendarLink}}",
-          "appointmentEmailOptin": "{{Contact.Attribute.<DE>.appointmentEmailOptin}}",
-          "apptDeepLinkForModify": "{{Contact.Attribute.<DE>.apptDeepLinkForModify}}",
-          "apptDeepLinkForCancel": "{{Contact.Attribute.<DE>.apptDeepLinkForCancel}}",
-          "isApprovedDomain": "{{Contact.Attribute.<DE>.isApprovedDomain}}"
-        }
-      ],
+      "inArguments": [],
       "outArguments": [],
-      "timeout": 60000,
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/execute",
+      "verb": "POST",
+      "format": "json",
+      "timeout": 10000,
       "retryCount": 3,
       "retryDelay": 1000,
-
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
-      "useJwt": true,
-      "customerKey": "PAUBOX_SFMC_JWT"
+      "concurrentRequests": 5,
+      "securityOptions": {
+        "securityContext": "20260320custom_activity_msauth"
+      }
     }
   },
-
   "configurationArguments": {
+    "applicationExtensionKey": "20260320custom_activity_msauth",
     "save": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
-      "useJwt": true,
-      "customerKey": "PAUBOX_SFMC_JWT"
-    },
-    "validate": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
-      "useJwt": true,
-      "customerKey": "PAUBOX_SFMC_JWT"
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
     },
     "publish": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
-      "useJwt": true,
-      "customerKey": "PAUBOX_SFMC_JWT"
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+    "validate": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
     },
     "stop": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
-      "useJwt": true,
-      "customerKey": "PAUBOX_SFMC_JWT"
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
     }
   },
-
   "userInterfaces": {
     "configModal": {
-      "height": 320,
-      "width": 520,
-      "url": "https://jcrow-cloud.github.io/mulepbox/public/index.html"
+      "height": 560,
+      "width": 900,
+      "fullscreen": false,
+      "url": "https://jcrow-cloud.github.io/jcrow-cloud/mulepbox/index.html"
     }
   },
-
-  "schema": { "arguments": {} }
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [],
+        "outArguments": []
+      }
+    }
+  }
 }
