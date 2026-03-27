@@ -1,157 +1,25 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Paubox Templated Email (Mule)</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      margin: 20px;
-    }
-    h2 { margin-bottom: 16px; }
-    label {
-      display: block;
-      margin: 12px 0 4px;
-      font-weight: 600;
-    }
-    input[type="text"] {
-      width: 560px;
-      padding: 6px 8px;
-      font-size: 14px;
-    }
-    .hint { font-size: 12px; color: #666; margin-top: 4px; }
-  </style>
+  <title>Paubox Templated Email</title>
+  <link rel="stylesheet" href="https://jcrow-cloud.github.io/mulepbox/css/styles.css" />
 </head>
-
 <body>
   <h2>Paubox Templated Email</h2>
+ <h2>Paubox Templated Email (Mule)</h2>
 
-  <label for="templateName">Template Name</label>
-  <p>always use the prefix sfmc_pcomm</p>
-  <input id="templateName" type="text" placeholder="EG  sfmc_pcomm_appointment_confirmation" />
+  <div class="row">
+    <label for="templateName">Template name</label>
+    <input id="templateName" type="text" placeholder="e.g., test_quest_template1" />
+  </div>
+  <div class="row">
+    <label for="subject">Subject</label>
+    <input id="subject" type="text" placeholder="e.g., Your appointment details" />
+  </div>
 
-  <label for="subject">Subject</label>
-  <input id="subject" type="text" placeholder="e.g. Your appointment details" />
-
-  <!-- Postmonger -->
   <script src="https://unpkg.com/postmonger/dist/postmonger.js"></script>
-
-  <script>
-    /* global Postmonger */
-
-    const connection = new Postmonger.Session();
-    let payload = {};
-    let entryKey = null;
-    let emailFieldKey = 'email';
-
-    document.addEventListener('DOMContentLoaded', () => {
-      connection.on('initActivity', onInit);
-      connection.on('requestedSchema', onSchema);
-      connection.on('clickedNext', onDone);
-
-      connection.trigger('ready');
-      connection.trigger('requestSchema');
-    });
-
-    function onInit(data) {
-      payload = data || {};
-    }
-
-    /**
-     * We do NOT need the DE name.
-     * requestSchema returns keys like:
-     *   Event.APIEvent-<GUID>.FirstName
-     * We extract the APIEvent key and build runtime tokens.
-     */
-    function onSchema(schema) {
-      if (!Array.isArray(schema) || !schema.length) return;
-
-      const match = schema[0].key.match(/^Event\.([^\.]+)\./);
-      entryKey = match ? match[1] : null;
-
-      const emailCol = schema.find(col => /(^|\.)email$/i.test(col.key));
-      if (emailCol) {
-        emailFieldKey = emailCol.key.split('.').pop();
-      }
-    }
-
-    function onDone() {
-      const templateName = val('templateName');
-      const subject = val('subject');
-
-      if (!entryKey || !templateName || !subject) {
-        alert(
-          'Please provide Template Name and Subject, and ensure the Journey has an Entry Source.'
-        );
-        return;
-      }
-
-      // Always-fixed "From" address
-      const fromEmail = 'noreply@pcomm.questdiagnostics.com';
-
-      // Fields always passed to template_values
-      const deFields = [
-        'subscriberKey','confirmationCode','guestId','prsProfileId','firstName','email',
-        'phoneNumber','address_1','address_2','city','zip','state','emailPrereregisterUrl',
-        'smsPrereregisterUrl','appointmentStatus','appointmentType','appointmentDateTime',
-        'appointmentTimeZone','appointmentSMSOptin','apptDeepLink','paymentOOP','qrCode',
-        'reasonForVisit','siteCode','partnerName','eorderAppointment','confirmAppointmentURL',
-        'appointmentConfirmedFlag','outstandingBalance','calendarLink','appointmentEmailOptin',
-        'appointmentSMSOptin','apptDeepLinkForModify','apptDeepLinkForCancel','inactiveTokens',
-        'reactivatedTokens','isApprovedDomain','dateAdded'
-      ];
-
-      const templateValuesObj = {};
-      deFields.forEach(field => {
-        templateValuesObj[field] = `{{Event.${entryKey}.${field}}}`;
-      });
-
-      // REQUIRED: escaped JSON string
-      const templateValuesEscaped = JSON.stringify(templateValuesObj);
-
-      const recipients = [`{{Event.${entryKey}.${emailFieldKey}}}`];
-
-      // FINAL PAUBOX PAYLOAD
-      // - No BCC
-      // - allowNonTLS and forceSecureNotification always false
-      const bodyObj = {
-        data: {
-          template_name: templateName,
-          template_values: templateValuesEscaped,
-          message: {
-            recipients,
-            headers: {
-              subject,
-              from: fromEmail
-            },
-            allowNonTLS: false,
-            forceSecureNotification: false
-          }
-        }
-      };
-
-      payload.arguments = payload.arguments || {};
-      payload.arguments.execute = payload.arguments.execute || {};
-      payload.arguments.execute.format = 'json';
-      payload.arguments.execute.body = JSON.stringify(bodyObj);
-
-      // Optional: minimal inArguments for reference / debugging
-      payload.arguments.execute.inArguments = [
-        { templateName },
-        { subject },
-        { fromEmail }, // fixed
-        { recipientEmail: recipients[0] }
-      ];
-
-      payload.metaData = payload.metaData || {};
-      payload.metaData.isConfigured = true;
-
-      connection.trigger('updateActivity', payload);
-    }
-
-    function val(id) {
-      return document.getElementById(id).value.trim();
-    }
-  </script>
+  <script src="https://jcrow-cloud.github.io/mulepbox/js/customActivity.js"></script>
 </body>
 </html>
