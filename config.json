@@ -16,7 +16,7 @@
     "execute": {
       "inArguments": [],
       "outArguments": [],
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/execute",
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
       "verb": "POST",
       "format": "json",
       "timeout": 10000,
