@@ -18,12 +18,12 @@
       "verb": "POST",
       "format": "json",
       "securityOptions": {
-        "securityContext": "REPLACE_WITH_SECURITY_CONTEXT_KEY"
+        "securityContext": "20260320custom_activity_msauth"
       }
     }
   },
   "configurationArguments": {
-    "applicationExtensionKey": "REPLACE_WITH_APP_EXTENSION_KEY"
+    "applicationExtensionKey": "20260320custom_activity_msauth"
   },
   "userInterfaces": {
     "configModal": {
