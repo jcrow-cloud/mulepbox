@@ -1,0 +1,36 @@
+{
+  "workflowApiVersion": "1.1",
+  "type": "REST",
+  "metaData": {
+    "icon": "images/icon.png",
+    "category": "custom",
+    "configOnDrop": true
+  },
+  "lang": {
+    "en-US": {
+      "name": "Paubox Templated Email",
+      "description": "Paubox email via Mule - version 2.0"
+    }
+  },
+  "arguments": {
+    "execute": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
+      "verb": "POST",
+      "format": "json",
+      "securityOptions": {
+        "securityContext": "REPLACE_WITH_SECURITY_CONTEXT_KEY"
+      }
+    }
+  },
+  "configurationArguments": {
+    "applicationExtensionKey": "REPLACE_WITH_APP_EXTENSION_KEY"
+  },
+  "userInterfaces": {
+    "configModal": {
+      "url": "https://jcrow-cloud.github.io/mulepbox/index.html",
+      "height": 560,
+      "width": 900,
+      "fullscreen": false
+    }
+  }
+}
