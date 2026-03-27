@@ -35,10 +35,17 @@ function onDone() {
   var templateName = getVal('templateName');
   var subject = getVal('subject');
 
-  if (!entryKey || !templateName || !subject) {
-    alert('Template Name and Subject are required.');
-    return;
-  }
+  
+if (!templateName || !subject) {
+  alert('Template Name and Subject are required.');
+  return;
+}
+
+if (!entryKey) {
+  alert('Journey entry data is still loading. Please wait a moment and try again.');
+  return;
+}
+
 
   var fromEmail = 'noreply@pcomm.questdiagnostics.com';
 
