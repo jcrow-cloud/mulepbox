@@ -1,0 +1,62 @@
+{
+  "workflowApiVersion": "1.1",
+  "metaData": {
+    "icon": "images/icon.png",
+    "category": "custom",
+    "configOnDrop": true
+  },
+  "type": "REST",
+  "lang": {
+    "en-US": {
+      "name": "Paubox Templated Mail (Mule)",
+      "description": "Sends a Paubox dynamic templated email via Mule using Journey Entry DE fields"
+    }
+  },
+  "arguments": {
+    "execute": {
+      "inArguments": [],
+      "outArguments": [],
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
+      "verb": "POST",
+      "format": "json",
+      "timeout": 10000,
+      "retryCount": 3,
+      "retryDelay": 1000,
+      "concurrentRequests": 5,
+      "securityOptions": {
+        "securityContext": "20260320custom_activity_msauth"
+      }
+    }
+  },
+  "configurationArguments": {
+    "applicationExtensionKey": "20260320custom_activity_msauth",
+    "save": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+    "publish": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+    "validate": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+    "stop": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    }
+  },
+  "userInterfaces": {
+    "configModal": {
+      "height": 560,
+      "width": 900,
+      "fullscreen": false,
+      "url": "https://jcrow-cloud.github.io/mulepbox/"
+    }
+  },
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [],
+        "outArguments": []
+      }
+    }
+  }
+}
