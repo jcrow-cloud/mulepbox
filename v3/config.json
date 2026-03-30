@@ -2,7 +2,7 @@
   "workflowApiVersion": "1.1",
   "type": "REST",
   "metaData": {
-    "icon": "images/icon.png",
+    "icon": "img/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
