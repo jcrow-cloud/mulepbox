@@ -10,9 +10,7 @@ var schemaReady = false;
 /**
  * Journey Builder handshake
  * --------------------------
- * IMPORTANT:
  * requestSchema() MUST be called only AFTER initActivity fires.
- * Calling it earlier causes Journey Builder to silently ignore the request.
  */
 connection.on('initActivity', function (data) {
   payload = data || {};
@@ -24,18 +22,33 @@ connection.on('initActivity', function (data) {
  */
 connection.on('requestedSchema', function (schema) {
   console.log('requestedSchema payload:', schema);
+
   if (!Array.isArray(schema) || !schema.length) {
     return;
   }
 
   // Extract entryKey (APIEvent-xxxx)
-  var match = schema[0].key.match(/^Event\.([^\.]+)\./);
+  var firstKey = schema[0] && schema[0].key;
+  if (!firstKey) {
+    console.warn('First schema item has no key:', schema[0]);
+    return;
+  }
+
+  var match = firstKey.match(/^Event\.([^\.]+)\./);
   entryKey = match ? match[1] : null;
 
-  // Try to auto-detect email field
-  var emailCol = schema.find(function (col) {
-    return /(^|\.)email$/i.test(col.key);
-  });
+  // IE-safe email field detection (NO Array.prototype.find)
+  var emailCol = null;
+  for (var i = 0; i < schema.length; i++) {
+    if (
+      schema[i] &&
+      schema[i].key &&
+      /(^|\.)email$/i.test(schema[i].key)
+    ) {
+      emailCol = schema[i];
+      break;
+    }
+  }
 
   if (emailCol) {
     emailFieldKey = emailCol.key.split('.').pop();
@@ -89,16 +102,19 @@ connection.on('clickedNext', function () {
   ];
 
   var templateValues = {};
-  fields.forEach(function (field) {
-    templateValues[field] = '{{Event.' + entryKey + '.' + field + '}}';
-  });
+  for (var j = 0; j < fields.length; j++) {
+    templateValues[fields[j]] =
+      '{{Event.' + entryKey + '.' + fields[j] + '}}';
+  }
 
   var body = {
     data: {
       template_name: templateName,
-      template_values: JSON.stringify(templateValues), // escaped JSON string
+      template_values: JSON.stringify(templateValues), // escaped JSON
       message: {
-        recipients: ['{{Event.' + entryKey + '.' + emailFieldKey + '}}'],
+        recipients: [
+          '{{Event.' + entryKey + '.' + emailFieldKey + '}}'
+        ],
         headers: {
           subject: subject,
           from: fromEmail
