@@ -23,6 +23,7 @@ connection.on('initActivity', function (data) {
  * Receive entry source schema
  */
 connection.on('requestedSchema', function (schema) {
+  console.log('requestedSchema payload:', schema);
   if (!Array.isArray(schema) || !schema.length) {
     return;
   }
