@@ -2,14 +2,14 @@
   "workflowApiVersion": "1.1",
   "type": "REST",
   "metaData": {
-    "icon": "img/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v4/img/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
   "lang": {
     "en-US": {
       "name": "Paubox Templated Email",
-      "description": "Paubox email via Mule - version 2.0"
+      "description": "Paubox email via Mule - version 3.0"
     }
   },
   "arguments": {
@@ -39,7 +39,7 @@
   },
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v3/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/v4/index.html",
       "height": 400,
       "width": 500,
       "fullscreen": false
