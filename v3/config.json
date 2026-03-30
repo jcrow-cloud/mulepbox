@@ -23,7 +23,19 @@
     }
   },
   "configurationArguments": {
-    "applicationExtensionKey": "20260320custom_activity_msauth"
+    "applicationExtensionKey": "20260320custom_activity_msauth",
+    "save": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+    "publish": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+    "validate": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+    "stop": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    }
   },
   "userInterfaces": {
     "configModal": {
