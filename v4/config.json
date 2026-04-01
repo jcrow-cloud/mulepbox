@@ -30,9 +30,12 @@
     "publish": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
     },
-    "validate": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
-    },
+
+    
+"validate": {
+  "url": "https://httpbin.org/status/200"
+},
+
     "stop": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
     }
@@ -41,7 +44,7 @@
     "configModal": {
       "url": "https://jcrow-cloud.github.io/mulepbox/v4/index.html",
       "height": 400,
-      "width": 500,
+      "width": 900,
       "fullscreen": false
     }
   }
