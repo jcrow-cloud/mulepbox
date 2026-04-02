@@ -10,8 +10,8 @@
 
   "lang": {
     "en-US": {
-      "name": "Paubox Templated Email",
-      "description": "Paubox email via Mule"
+      "name": "Paubox Email",
+      "description": "Paubox email via Mulesoft"
     }
   },
 
@@ -62,7 +62,7 @@
     "configModal": {
       "url": "https://jcrow-cloud.github.io/mulepbox/v4/index.html",
       "height": 400,
-      "width": 100,
+      "width": 400,
       "fullscreen": false
     }
   }
