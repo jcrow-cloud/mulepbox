@@ -1,50 +1,68 @@
 {
   "workflowApiVersion": "1.1",
   "type": "REST",
+
   "metaData": {
     "icon": "https://jcrow-cloud.github.io/mulepbox/v4/img/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
+
   "lang": {
     "en-US": {
       "name": "Paubox Templated Email",
-      "description": "Paubox email via Mule - version 3.0"
+      "description": "Paubox email via Mule"
     }
   },
+
   "arguments": {
     "execute": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
       "verb": "POST",
       "format": "json",
       "securityOptions": {
-        "securityContext": "20260320custom_activity_msauth"
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_msauth"
       }
     }
   },
+
   "configurationArguments": {
-    "applicationExtensionKey": "20260320custom_activity_msauth",
     "save": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_msauth"
+      }
+    },
+    "validate": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_msauth"
+      }
     },
     "publish": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_msauth"
+      }
     },
-
-    
-"validate": {
-  "url": "https://httpbin.org/status/200"
-},
-
     "stop": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_msauth"
+      }
     }
   },
+
   "userInterfaces": {
     "configModal": {
       "url": "https://jcrow-cloud.github.io/mulepbox/v4/index.html",
       "height": 400,
-      "width": 900,
+      "width": 100,
       "fullscreen": false
     }
   }
