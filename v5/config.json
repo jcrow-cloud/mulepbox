@@ -62,7 +62,7 @@
     "configModal": {
       "url": "https://jcrow-cloud.github.io/mulepbox/v5/index.html",
       "height": 400,
-      "width": 1500,
+      "width": 400,
       "fullscreen": false
     }
   }
