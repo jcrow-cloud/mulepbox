@@ -3,7 +3,7 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v8/img/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v9/img/icon.png",
     "category": "customer",
     "configOnDrop": true
   },
@@ -85,7 +85,7 @@
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v8/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/v9/index.html",
       "height": 400,
       "width": 400,
       "fullscreen": false
