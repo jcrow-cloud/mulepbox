@@ -1,10 +1,10 @@
 {
-  "workflowApiVersion": "1.0",
+  "workflowApiVersion": "1.1",
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v7/img/icon.png",
-    "category": "flow",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v8/img/icon.png",
+    "category": "customer",
     "configOnDrop": true
   },
 
@@ -20,6 +20,13 @@
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
       "verb": "POST",
       "format": "json",
+
+      "outArguments": [
+        {
+          "status": "DefaultStatus"
+        }
+      ],
+
       "securityOptions": {
         "securityType": "securityContext",
         "securityContextKey": "20260320custom_activity_msauth"
@@ -62,16 +69,25 @@
     "arguments": {
       "execute": {
         "inArguments": [],
-        "outArguments": []
+        "outArguments": [
+          {
+            "status": {
+              "dataType": "Text",
+              "isNullable": true,
+              "access": "visible",
+              "direction": "out"
+            }
+          }
+        ]
       }
     }
   },
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v7/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/v8/index.html",
       "height": 400,
-      "width": 900,
+      "width": 400,
       "fullscreen": false
     }
   }
