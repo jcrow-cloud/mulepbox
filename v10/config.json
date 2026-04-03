@@ -1,0 +1,74 @@
+{
+  "workflowApiVersion": "1.1",
+  "type": "REST",
+
+  "metaData": {
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v10/img/icon.png",
+    "category": "customer",
+    "configOnDrop": true
+  },
+
+  "lang": {
+    "en-US": {
+      "name": "Paubox Templated Email",
+      "description": "Paubox email via Mule"
+    }
+  },
+
+  "arguments": {
+    "execute": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
+      "verb": "POST",
+      "format": "json",
+
+      "outArguments": [
+        {
+          "status": "DefaultStatus"
+        }
+      ],
+
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_msauth"
+      }
+    }
+  },
+
+ "configurationArguments": {
+    "applicationExtensionKey": "MY_KEY_ANYTHING_I_WANT_MULESOFT_TEST",
+    "save":    { "url": "https://marketingcloudmuleapi-pupnzr.rajrd4-1.usa-e1.cloudhub.io/api/marketingCloud/save",    "useJwt": false },
+    "publish": { "url": "https://marketingcloudmuleapi-pupnzr.rajrd4-1.usa-e1.cloudhub.io/api/marketingCloud/publish", "useJwt": false },
+    "validate":{ "url": "https://marketingcloudmuleapi-pupnzr.rajrd4-1.usa-e1.cloudhub.io/api/marketingCloud/validate","useJwt": false },
+    "stop":    { "url": "https://marketingcloudmuleapi-pupnzr.rajrd4-1.usa-e1.cloudhub.io/api/marketingCloud/stop",    "useJwt": false }
+  },
+  "userInterfaces": {
+    "configModal": { "height": 480, "width": 480 }
+  },
+
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [],
+        "outArguments": [
+          {
+            "status": {
+              "dataType": "Text",
+              "isNullable": true,
+              "access": "visible",
+              "direction": "out"
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "userInterfaces": {
+    "configModal": {
+      "url": "https://jcrow-cloud.github.io/mulepbox/v9/index.html",
+      "height": 400,
+      "width": 800,
+      "fullscreen": false
+    }
+  }
+}
