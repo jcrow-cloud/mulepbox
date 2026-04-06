@@ -3,15 +3,15 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v10/img/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v-support/img/icon.png",
     "category": "customer",
     "configOnDrop": true
   },
 
   "lang": {
     "en-US": {
-      "name": "Paubox Templated Email",
-      "description": "Paubox email via Mule"
+      "name": "Paubox Email (Test)",
+      "description": "Test custom activity calling MuleSoft"
     }
   },
 
@@ -20,13 +20,11 @@
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
       "verb": "POST",
       "format": "json",
-
       "outArguments": [
         {
           "status": "DefaultStatus"
         }
       ],
-
       "securityOptions": {
         "securityType": "securityContext",
         "securityContextKey": "20260320custom_activity_msauth"
@@ -34,15 +32,35 @@
     }
   },
 
- "configurationArguments": {
-    "applicationExtensionKey": "MY_KEY_ANYTHING_I_WANT_MULESOFT_TEST",
-    "save":    { "url": "https://marketingcloudmuleapi-pupnzr.rajrd4-1.usa-e1.cloudhub.io/api/marketingCloud/save",    "useJwt": false },
-    "publish": { "url": "https://marketingcloudmuleapi-pupnzr.rajrd4-1.usa-e1.cloudhub.io/api/marketingCloud/publish", "useJwt": false },
-    "validate":{ "url": "https://marketingcloudmuleapi-pupnzr.rajrd4-1.usa-e1.cloudhub.io/api/marketingCloud/validate","useJwt": false },
-    "stop":    { "url": "https://marketingcloudmuleapi-pupnzr.rajrd4-1.usa-e1.cloudhub.io/api/marketingCloud/stop",    "useJwt": false }
-  },
-  "userInterfaces": {
-    "configModal": { "height": 480, "width": 480 }
+  "configurationArguments": {
+    "save": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_msauth"
+      }
+    },
+    "validate": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_msauth"
+      }
+    },
+    "publish": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_msauth"
+      }
+    },
+    "stop": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_msauth"
+      }
+    }
   },
 
   "schema": {
@@ -65,9 +83,9 @@
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v9/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/v10/index.html",
       "height": 400,
-      "width": 800,
+      "width": 600,
       "fullscreen": false
     }
   }
