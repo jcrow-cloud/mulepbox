@@ -3,7 +3,7 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v10/images/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v10/img/icon.png",
     "category": "customer",
     "configOnDrop": true
   },
