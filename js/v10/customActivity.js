@@ -2,50 +2,69 @@
 (function () {
   'use strict';
 
-  // Create Postmonger session
   var connection = new Postmonger.Session();
-
-  // Activity payload
   var activity = {};
+  var schema = [];
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Lifecycle handlers
     connection.on('initActivity', onInitActivity);
+    connection.on('requestedSchema', onRequestedSchema);
     connection.on('clickedNext', onDone);
 
-    // Tell Journey Builder we are ready
     connection.trigger('ready');
+    connection.trigger('requestSchema');
   });
 
   /**
-   * Initialize / rehydrate activity
+   * Initialize activity
    */
   function onInitActivity(payload) {
     activity = payload || {};
   }
 
   /**
-   * Handle Done / Save
+   * Receive entry source schema
+   */
+  function onRequestedSchema(payload) {
+    schema = payload && payload.schema ? payload.schema : payload;
+  }
+
+  /**
+   * Save configuration
    */
   function onDone() {
-    // Ensure arguments object exists
     activity.arguments = activity.arguments || {};
 
     /**
-     * VERY IMPORTANT:
-     * For validation safety, execute body MUST be static and simple.
-     * No schema, no tokens, no dynamic JSON.
+     * Build a realistic execute payload.
+     * This mirrors how normal custom activities work,
+     * without doing anything exotic that could break validation.
      */
-    activity.arguments.execute = {
-      format: 'json',
-      body: "{}"
+    var executePayload = {
+      data: {
+        fields: {}
+      }
     };
 
-    // Mark activity as configured
+    // Include schema keys as placeholder tokens
+    if (Array.isArray(schema)) {
+      for (var i = 0; i < schema.length; i++) {
+        if (schema[i] && schema[i].key) {
+          var simpleName = schema[i].key.split('.').pop();
+          executePayload.data.fields[simpleName] =
+            '{{' + schema[i].key + '}}';
+        }
+      }
+    }
+
+    activity.arguments.execute = {
+      format: 'json',
+      body: JSON.stringify(executePayload)
+    };
+
     activity.metaData = activity.metaData || {};
     activity.metaData.isConfigured = true;
 
-    // Hand control back to Journey Builder
     connection.trigger('updateActivity', activity);
   }
 
