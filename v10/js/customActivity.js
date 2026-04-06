@@ -15,38 +15,23 @@
     connection.trigger('requestSchema');
   });
 
-  /**
-   * Initialize activity
-   */
   function onInitActivity(payload) {
     activity = payload || {};
   }
 
-  /**
-   * Receive entry source schema
-   */
   function onRequestedSchema(payload) {
     schema = payload && payload.schema ? payload.schema : payload;
   }
 
-  /**
-   * Save configuration
-   */
   function onDone() {
     activity.arguments = activity.arguments || {};
 
-    /**
-     * Build a realistic execute payload.
-     * This mirrors how normal custom activities work,
-     * without doing anything exotic that could break validation.
-     */
     var executePayload = {
       data: {
         fields: {}
       }
     };
 
-    // Include schema keys as placeholder tokens
     if (Array.isArray(schema)) {
       for (var i = 0; i < schema.length; i++) {
         if (schema[i] && schema[i].key) {
@@ -59,7 +44,10 @@
 
     activity.arguments.execute = {
       format: 'json',
-      body: JSON.stringify(executePayload)
+      body: JSON.stringify(executePayload),
+      outArguments: [
+        { status: 'DefaultStatus' }
+      ]
     };
 
     activity.metaData = activity.metaData || {};
