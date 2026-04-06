@@ -10,8 +10,8 @@
 
   "lang": {
     "en-US": {
-      "name": "Paubox Email (Test)",
-      "description": "Test custom activity calling MuleSoft"
+      "name": "Paubox Email (Test 2)",
+      "description": "Custom activity calling MuleSoft"
     }
   },
 
@@ -20,11 +20,13 @@
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
       "verb": "POST",
       "format": "json",
+
       "outArguments": [
         {
           "status": "DefaultStatus"
         }
       ],
+
       "securityOptions": {
         "securityType": "securityContext",
         "securityContextKey": "20260320custom_activity_msauth"
