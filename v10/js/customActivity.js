@@ -30,14 +30,14 @@
         : {};
 
     var templateInput = document.getElementById('templateName');
-    var subjectInput = document.getElementById('subjectLine');
+    var subjectInput = document.getElementById('subject');
 
     if (templateInput) {
       templateInput.value = args.templateName || '';
     }
 
     if (subjectInput) {
-      subjectInput.value = args.subjectLine || '';
+      subjectInput.value = args.subject || '';
     }
   }
 
@@ -56,10 +56,10 @@
     activity.arguments.execute = activity.arguments.execute || {};
 
     var templateInput = document.getElementById('templateName');
-    var subjectInput = document.getElementById('subjectLine');
+    var subjectInput = document.getElementById('subject');
 
     var templateName = templateInput ? templateInput.value : '';
-    var subjectLine = subjectInput ? subjectInput.value : '';
+    var subject = subjectInput ? subjectInput.value : '';
 
     // ------------------------------------------
     // Build merge-field map from Entry Source
@@ -81,7 +81,7 @@
     activity.arguments.execute.inArguments = [
       {
         templateName: templateName,
-        subjectLine: subjectLine
+        subjectLine: subject
       }
     ];
 
@@ -92,7 +92,7 @@
     activity.arguments.execute.body = JSON.stringify({
       data: {
         templateName: templateName,
-        subjectLine: subjectLine,
+        subjectLine: subject,
         fields: fields
       }
     });
