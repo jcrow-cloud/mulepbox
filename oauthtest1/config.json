@@ -12,7 +12,7 @@
       "description": "OA test"
     }
   },
-  /* MOVE SECURITY OPTIONS HERE (ROOT LEVEL) */
+
   "securityOptions": {
     "securityType": "securityContext",
     "securityContextKey": "20260406_z_pcomm_pbox_oauthtest"
