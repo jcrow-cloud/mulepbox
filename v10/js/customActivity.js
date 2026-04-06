@@ -15,77 +15,93 @@
     connection.trigger('requestSchema');
   });
 
+  // ------------------------------------------------------------
+  // Init: rehydrate UI from saved Journey configuration
+  // ------------------------------------------------------------
   function onInitActivity(payload) {
     activity = payload || {};
 
-    // Restore saved UI values
-    if (activity.metaData) {
-      var templateInput = document.getElementById('templateName');
-      var subjectInput = document.getElementById('subjectLine');
-
-      if (templateInput) {
-        templateInput.value = activity.metaData.templateName || '';
-      }
-
-      if (subjectInput) {
-        subjectInput.value = activity.metaData.subjectLine || '';
-      }
-    }
-  }
-
-  function onRequestedSchema(payload) {
-    schema = payload && payload.schema ? payload.schema : payload;
-  }
-
-  function onDone() {
-    activity.arguments = activity.arguments || {};
-    activity.metaData = activity.metaData || {};
-
-    // Read UI inputs
-    var templateName = '';
-    var subjectLine = '';
+    var args =
+      activity.arguments &&
+      activity.arguments.execute &&
+      activity.arguments.execute.inArguments &&
+      activity.arguments.execute.inArguments[0]
+        ? activity.arguments.execute.inArguments[0]
+        : {};
 
     var templateInput = document.getElementById('templateName');
     var subjectInput = document.getElementById('subjectLine');
 
     if (templateInput) {
-      templateName = templateInput.value || '';
+      templateInput.value = args.templateName || '';
     }
 
     if (subjectInput) {
-      subjectLine = subjectInput.value || '';
+      subjectInput.value = args.subjectLine || '';
     }
+  }
 
-    // Build execute payload
-    var executePayload = {
-      data: {
-        fields: {},
-        templateName: templateName,
-        subjectLine: subjectLine
-      }
-    };
+  // ------------------------------------------------------------
+  // Schema: store Entry Source schema for merge field generation
+  // ------------------------------------------------------------
+  function onRequestedSchema(payload) {
+    schema = payload && payload.schema ? payload.schema : [];
+  }
+
+  // ------------------------------------------------------------
+  // Done: persist configuration + runtime payload definition
+  // ------------------------------------------------------------
+  function onDone() {
+    activity.arguments = activity.arguments || {};
+    activity.arguments.execute = activity.arguments.execute || {};
+
+    var templateInput = document.getElementById('templateName');
+    var subjectInput = document.getElementById('subjectLine');
+
+    var templateName = templateInput ? templateInput.value : '';
+    var subjectLine = subjectInput ? subjectInput.value : '';
+
+    // ------------------------------------------
+    // Build merge-field map from Entry Source
+    // ------------------------------------------
+    var fields = {};
 
     if (Array.isArray(schema)) {
       for (var i = 0; i < schema.length; i++) {
         if (schema[i] && schema[i].key) {
           var simpleName = schema[i].key.split('.').pop();
-          executePayload.data.fields[simpleName] =
-            '{{' + schema[i].key + '}}';
+          fields[simpleName] = '{{' + schema[i].key + '}}';
         }
       }
     }
 
-    activity.arguments.execute = {
-      format: 'json',
-      body: JSON.stringify(executePayload),
-      outArguments: [
-        { status: 'DefaultStatus' }
-      ]
-    };
+    // ------------------------------------------
+    // Canonical JB persistence (CONFIG)
+    // ------------------------------------------
+    activity.arguments.execute.inArguments = [
+      {
+        templateName: templateName,
+        subjectLine: subjectLine
+      }
+    ];
 
-    // Persist UI state for re-open
-    activity.metaData.templateName = templateName;
-    activity.metaData.subjectLine = subjectLine;
+    // ------------------------------------------
+    // Runtime payload (what JB POSTs on EXECUTE)
+    // ------------------------------------------
+    activity.arguments.execute.format = 'json';
+    activity.arguments.execute.body = JSON.stringify({
+      data: {
+        templateName: templateName,
+        subjectLine: subjectLine,
+        fields: fields
+      }
+    });
+
+    activity.arguments.execute.outArguments = [
+      { status: 'DefaultStatus' }
+    ];
+
+    activity.metaData = activity.metaData || {};
     activity.metaData.isConfigured = true;
 
     connection.trigger('updateActivity', activity);
