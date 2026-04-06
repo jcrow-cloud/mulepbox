@@ -10,8 +10,8 @@
 
   "lang": {
     "en-US": {
-      "name": "Paubox Email (Test)",
-      "description": "Test custom activity calling MuleSoft"
+      "name": "v10 Paubox Email",
+      "description": "v10 ustom activity calling MuleSoft"
     }
   },
 
@@ -92,7 +92,7 @@
     "configModal": {
       "url": "https://jcrow-cloud.github.io/mulepbox/v10/index.html",
       "height": 400,
-      "width": 600,
+      "width": 900,
       "fullscreen": false
     }
   }
