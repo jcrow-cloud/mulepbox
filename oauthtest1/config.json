@@ -8,8 +8,8 @@
   },
   "lang": {
     "en-US": {
-      "name": "oa test",
-      "description": "OA test"
+      "name": "oa test 1",
+      "description": "OA test 1"
     }
   },
 
@@ -27,26 +27,26 @@
           "status": "DefaultStatus"
         }
       ]
-      /* REMOVE securityOptions FROM HERE */
+ 
     }
   },
   "configurationArguments": {
     "applicationExtensionKey": "paubox-test-extension",
     "save": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
-      /* REMOVE securityOptions FROM HERE */
+    
     },
     "validate": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
-      /* REMOVE securityOptions FROM HERE */
+   
     },
     "publish": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
-      /* REMOVE securityOptions FROM HERE */
+  
     },
     "stop": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
-      /* REMOVE securityOptions FROM HERE */
+
     }
   },
   "schema": {
