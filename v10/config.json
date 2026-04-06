@@ -4,14 +4,14 @@
 
   "metaData": {
     "icon": "https://jcrow-cloud.github.io/mulepbox/v10/images/icon.png",
-    "category": "custom",
+    "category": "customer",
     "configOnDrop": true
   },
 
   "lang": {
     "en-US": {
-      "name": "Paubox Email (Test 2)",
-      "description": "Custom activity calling MuleSoft"
+      "name": "Paubox Email (Test)",
+      "description": "Test custom activity calling MuleSoft"
     }
   },
 
@@ -35,6 +35,8 @@
   },
 
   "configurationArguments": {
+    "applicationExtensionKey": "paubox-test-extension",
+
     "save": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "securityOptions": {
@@ -42,6 +44,7 @@
         "securityContextKey": "20260320custom_activity_msauth"
       }
     },
+
     "validate": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "securityOptions": {
@@ -49,6 +52,7 @@
         "securityContextKey": "20260320custom_activity_msauth"
       }
     },
+
     "publish": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "securityOptions": {
@@ -56,6 +60,7 @@
         "securityContextKey": "20260320custom_activity_msauth"
       }
     },
+
     "stop": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "securityOptions": {
