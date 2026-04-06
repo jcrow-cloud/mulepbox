@@ -15,9 +15,6 @@
     connection.trigger('requestSchema');
   });
 
-  // ------------------------------------------------------------
-  // Init: rehydrate UI from saved Journey configuration
-  // ------------------------------------------------------------
   function onInitActivity(payload) {
     activity = payload || {};
 
@@ -41,16 +38,10 @@
     }
   }
 
-  // ------------------------------------------------------------
-  // Schema: store Entry Source schema for merge field generation
-  // ------------------------------------------------------------
   function onRequestedSchema(payload) {
     schema = payload && payload.schema ? payload.schema : [];
   }
 
-  // ------------------------------------------------------------
-  // Done: persist configuration + runtime payload definition
-  // ------------------------------------------------------------
   function onDone() {
     activity.arguments = activity.arguments || {};
     activity.arguments.execute = activity.arguments.execute || {};
@@ -61,9 +52,6 @@
     var templateName = templateInput ? templateInput.value : '';
     var subject = subjectInput ? subjectInput.value : '';
 
-    // ------------------------------------------
-    // Build merge-field map from Entry Source
-    // ------------------------------------------
     var fields = {};
 
     if (Array.isArray(schema)) {
@@ -75,24 +63,18 @@
       }
     }
 
-    // ------------------------------------------
-    // Canonical JB persistence (CONFIG)
-    // ------------------------------------------
     activity.arguments.execute.inArguments = [
       {
         templateName: templateName,
-        subjectLine: subject
+        subject: subject
       }
     ];
 
-    // ------------------------------------------
-    // Runtime payload (what JB POSTs on EXECUTE)
-    // ------------------------------------------
     activity.arguments.execute.format = 'json';
     activity.arguments.execute.body = JSON.stringify({
       data: {
         templateName: templateName,
-        subjectLine: subject,
+        subject: subject,
         fields: fields
       }
     });
@@ -108,3 +90,4 @@
   }
 
 })();
+``
