@@ -1,75 +1,54 @@
 {
   "workflowApiVersion": "1.1",
   "type": "REST",
-
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/oauthtest/images/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/oauthtest1/images/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
-
   "lang": {
     "en-US": {
       "name": "oa test",
       "description": "OA test"
     }
   },
-
+  /* MOVE SECURITY OPTIONS HERE (ROOT LEVEL) */
+  "securityOptions": {
+    "securityType": "securityContext",
+    "securityContextKey": "20260406_z_pcomm_pbox_oauthtest"
+  },
   "arguments": {
     "execute": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
       "verb": "POST",
       "format": "json",
-
       "outArguments": [
         {
           "status": "DefaultStatus"
         }
-      ],
-
-      "securityOptions": {
-        "securityType": "securityContext",
-        "securityContextKey": "20260406_z_pcomm_pbox_oauthtest"
-      }
+      ]
+      /* REMOVE securityOptions FROM HERE */
     }
   },
-
   "configurationArguments": {
     "applicationExtensionKey": "paubox-test-extension",
-
     "save": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
-      "securityOptions": {
-        "securityType": "securityContext",
-        "securityContextKey": "20260406_z_pcomm_pbox_oauthtest"
-      }
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+      /* REMOVE securityOptions FROM HERE */
     },
-
     "validate": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
-      "securityOptions": {
-        "securityType": "securityContext",
-        "securityContextKey": "20260406_z_pcomm_pbox_oauthtest"
-      }
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+      /* REMOVE securityOptions FROM HERE */
     },
-
     "publish": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
-      "securityOptions": {
-        "securityType": "securityContext",
-        "securityContextKey": "20260406_z_pcomm_pbox_oauthtest"
-      }
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+      /* REMOVE securityOptions FROM HERE */
     },
-
     "stop": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
-      "securityOptions": {
-        "securityType": "securityContext",
-        "securityContextKey": "20260406_z_pcomm_pbox_oauthtest"
-      }
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+      /* REMOVE securityOptions FROM HERE */
     }
   },
-
   "schema": {
     "arguments": {
       "execute": {
@@ -87,10 +66,9 @@
       }
     }
   },
-
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/oauthtest/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/oauthtest1/index.html",
       "height": 400,
       "width": 500,
       "fullscreen": false
