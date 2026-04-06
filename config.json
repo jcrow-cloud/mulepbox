@@ -1,0 +1,99 @@
+{
+  "workflowApiVersion": "1.1",
+  "type": "REST",
+
+  "metaData": {
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v11/images/icon.png",
+    "category": "custom",
+    "configOnDrop": true
+  },
+
+  "lang": {
+    "en-US": {
+      "name": "v11 Paubox Email",
+      "description": "v11 custom activity calling MuleSoft"
+    }
+  },
+
+  "arguments": {
+    "execute": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
+      "verb": "POST",
+      "format": "json",
+
+      "outArguments": [
+        {
+          "status": "DefaultStatus"
+        }
+      ],
+
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260406_pcomm_mulesoft_paubox_non_p"
+      }
+    }
+  },
+
+  "configurationArguments": {
+    "applicationExtensionKey": "paubox-test-extension",
+
+    "save": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260406_pcomm_mulesoft_paubox_non_p"
+      }
+    },
+
+    "validate": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260406_pcomm_mulesoft_paubox_non_p"
+      }
+    },
+
+    "publish": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260406_pcomm_mulesoft_paubox_non_p"
+      }
+    },
+
+    "stop": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260406_pcomm_mulesoft_paubox_non_p"
+      }
+    }
+  },
+
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [],
+        "outArguments": [
+          {
+            "status": {
+              "dataType": "Text",
+              "isNullable": true,
+              "access": "visible",
+              "direction": "out"
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "userInterfaces": {
+    "configModal": {
+      "url": "https://jcrow-cloud.github.io/mulepbox/v11/index.html",
+      "height": 400,
+      "width": 400,
+      "fullscreen": false
+    }
+  }
+}
