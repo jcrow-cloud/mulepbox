@@ -17,6 +17,20 @@
 
   function onInitActivity(payload) {
     activity = payload || {};
+
+    // Restore saved UI values
+    if (activity.metaData) {
+      var templateInput = document.getElementById('templateName');
+      var subjectInput = document.getElementById('subjectLine');
+
+      if (templateInput) {
+        templateInput.value = activity.metaData.templateName || '';
+      }
+
+      if (subjectInput) {
+        subjectInput.value = activity.metaData.subjectLine || '';
+      }
+    }
   }
 
   function onRequestedSchema(payload) {
@@ -25,10 +39,29 @@
 
   function onDone() {
     activity.arguments = activity.arguments || {};
+    activity.metaData = activity.metaData || {};
 
+    // Read UI inputs
+    var templateName = '';
+    var subjectLine = '';
+
+    var templateInput = document.getElementById('templateName');
+    var subjectInput = document.getElementById('subjectLine');
+
+    if (templateInput) {
+      templateName = templateInput.value || '';
+    }
+
+    if (subjectInput) {
+      subjectLine = subjectInput.value || '';
+    }
+
+    // Build execute payload
     var executePayload = {
       data: {
-        fields: {}
+        fields: {},
+        templateName: templateName,
+        subjectLine: subjectLine
       }
     };
 
@@ -50,7 +83,9 @@
       ]
     };
 
-    activity.metaData = activity.metaData || {};
+    // Persist UI state for re-open
+    activity.metaData.templateName = templateName;
+    activity.metaData.subjectLine = subjectLine;
     activity.metaData.isConfigured = true;
 
     connection.trigger('updateActivity', activity);
