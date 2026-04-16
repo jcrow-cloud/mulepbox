@@ -3,15 +3,15 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v12/images/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v13/images/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
 
   "lang": {
     "en-US": {
-      "name": "v12 Paubox Email",
-      "description": "v12 custom activity calling MuleSoft"
+      "name": "v13 Paubox Email",
+      "description": "v13 custom activity calling MuleSoft Paubox"
     }
   },
 
@@ -20,6 +20,10 @@
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
       "verb": "POST",
       "format": "json",
+
+      "inArguments": [
+        {}
+      ],
 
       "outArguments": [
         {
@@ -73,7 +77,15 @@
   "schema": {
     "arguments": {
       "execute": {
-        "inArguments": [],
+        "inArguments": [
+          {
+            "payload": {
+              "dataType": "Text",
+              "isNullable": true,
+              "direction": "in"
+            }
+          }
+        ],
         "outArguments": [
           {
             "status": {
@@ -90,9 +102,9 @@
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v12/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/v13/index.html",
       "height": 400,
-      "width": 800,
+      "width": 500,
       "fullscreen": false
     }
   }
