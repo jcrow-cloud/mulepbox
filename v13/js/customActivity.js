@@ -52,32 +52,12 @@
     var templateName = templateInput ? templateInput.value : '';
     var subject = subjectInput ? subjectInput.value : '';
 
-    var fields = {};
-
-    if (Array.isArray(schema)) {
-      for (var i = 0; i < schema.length; i++) {
-        if (schema[i] && schema[i].key) {
-          var simpleName = schema[i].key.split('.').pop();
-          fields[simpleName] = '{{' + schema[i].key + '}}';
-        }
-      }
-    }
-
     activity.arguments.execute.inArguments = [
       {
         templateName: templateName,
         subject: subject
       }
     ];
-
-    activity.arguments.execute.format = 'json';
-    activity.arguments.execute.body = JSON.stringify({
-      data: {
-        templateName: templateName,
-        subject: subject,
-        fields: fields
-      }
-    });
 
     activity.arguments.execute.outArguments = [
       { status: 'DefaultStatus' }
@@ -90,4 +70,3 @@
   }
 
 })();
-``
