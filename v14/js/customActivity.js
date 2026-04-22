@@ -36,11 +36,14 @@
     activity.arguments = activity.arguments || {};
     activity.arguments.execute = activity.arguments.execute || {};
 
-    var entryKey = document.getElementById('apiJourneyEntryName')?.value || '';
-    var templateName = document.getElementById('templateName')?.value || '';
-    var subject = document.getElementById('subject')?.value || '';
+    var entryInput = document.getElementById('apiJourneyEntryName');
+    var templateInput = document.getElementById('templateName');
+    var subjectInput = document.getElementById('subject');
 
-    // Helper to build {{Event.<key>.<field>}}
+    var entryKey = entryInput ? entryInput.value : '';
+    var templateName = templateInput ? templateInput.value : '';
+    var subject = subjectInput ? subjectInput.value : '';
+
     function ev(field) {
       return '{{Event.' + entryKey + '.' + field + '}}';
     }
@@ -95,10 +98,6 @@
           }
         }
       }
-    ];
-
-    activity.arguments.execute.outArguments = [
-      { status: 'DefaultStatus' }
     ];
 
     activity.metaData = activity.metaData || {};
