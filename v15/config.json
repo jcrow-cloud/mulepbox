@@ -10,14 +10,15 @@
 
   "lang": {
     "en-US": {
-      "name": "v14 Paubox Email",
-      "description": "v14 Paubox Journey Builder custom activity"
+      "name": "v15 Paubox Email",
+      "description": "v15 Paubox Journey Builder custom activity"
     }
   },
 
   "arguments": {
     "execute": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
+              "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      /* "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email", */
       "format": "json",
 
       "inArguments": [
@@ -86,7 +87,7 @@
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v14/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/v15/index.html",
       "height": 400,
       "width": 500,
       "fullscreen": false
