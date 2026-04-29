@@ -1,0 +1,95 @@
+{
+  "workflowApiVersion": "1.1",
+  "type": "REST",
+
+  "metaData": {
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v16/images/icon.png",
+    "category": "custom",
+    "configOnDrop": true
+  },
+
+  "lang": {
+    "en-US": {
+      "name": "v16 Paubox Email",
+      "description": "v16 Journey Builder custom activity"
+    }
+  },
+
+  "arguments": {
+    "execute": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "format": "json",
+
+      "inArguments": [
+        {
+          "data": {}
+        }
+      ],
+
+      "outArguments": [
+        {
+          "status": "DefaultStatus"
+        }
+      ],
+
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_msauth"
+      }
+    }
+  },
+
+  "configurationArguments": {
+    "applicationExtensionKey": "PCOMM_paubox_v2",
+
+    "save": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+
+    "validate": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+
+    "publish": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+
+    "stop": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    }
+  },
+
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [
+          {
+            "data": {
+              "dataType": "Object",
+              "direction": "in"
+            }
+          }
+        ],
+        "outArguments": [
+          {
+            "status": {
+              "dataType": "Text",
+              "isNullable": true,
+              "access": "visible",
+              "direction": "out"
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "userInterfaces": {
+    "configModal": {
+      "url": "https://jcrow-cloud.github.io/mulepbox/v16/index.html",
+      "height": 400,
+      "width": 500,
+      "fullscreen": false
+    }
+  }
+}
