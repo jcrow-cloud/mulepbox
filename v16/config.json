@@ -3,21 +3,21 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v15/images/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v16/images/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
 
   "lang": {
     "en-US": {
-      "name": "v15 Paubox Email",
-      "description": "v15 Paubox Journey Builder custom activity"
+      "name": "Paubox Email",
+      "description": "Journey Builder custom activity to send email via Mule to Paubox"
     }
   },
 
   "arguments": {
     "execute": {
-              "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "format": "json",
 
       "inArguments": [
@@ -86,8 +86,8 @@
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v15/index.html",
-      "height": 400,
+      "url": "https://jcrow-cloud.github.io/mulepbox/v16/index.html",
+      "height": 800,
       "width": 500,
       "fullscreen": false
     }
