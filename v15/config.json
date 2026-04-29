@@ -18,7 +18,6 @@
   "arguments": {
     "execute": {
               "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
-      /* "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email", */
       "format": "json",
 
       "inArguments": [
