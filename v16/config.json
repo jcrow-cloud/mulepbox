@@ -1,95 +1,109 @@
-{
-  "workflowApiVersion": "1.1",
-  "type": "REST",
+/* global Postmonger */
+(function () {
+  'use strict';
 
-  "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v16/images/icon.png",
-    "category": "custom",
-    "configOnDrop": true
-  },
+  var connection = new Postmonger.Session();
+  var activity = {};
 
-  "lang": {
-    "en-US": {
-      "name": "v16 Paubox Email",
-      "description": "v16 Journey Builder custom activity"
-    }
-  },
+  document.addEventListener('DOMContentLoaded', function () {
+    connection.on('initActivity', onInitActivity);
+    connection.on('clickedNext', onDone);
+    connection.trigger('ready');
+  });
 
-  "arguments": {
-    "execute": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
-      "format": "json",
+  function onInitActivity(payload) {
+    activity = payload || {};
 
-      "inArguments": [
-        {
-          "data": {}
-        }
-      ],
+    var data =
+      activity.arguments &&
+      activity.arguments.execute &&
+      activity.arguments.execute.inArguments &&
+      activity.arguments.execute.inArguments[0] &&
+      activity.arguments.execute.inArguments[0].data
+        ? activity.arguments.execute.inArguments[0].data
+        : {};
 
-      "outArguments": [
-        {
-          "status": "DefaultStatus"
-        }
-      ],
+    var entryInput = document.getElementById('apiJourneyEntryName');
+    var templateInput = document.getElementById('templateName');
+    var subjectInput = document.getElementById('subject');
 
-      "securityOptions": {
-        "securityType": "securityContext",
-        "securityContextKey": "20260320custom_activity_msauth"
-      }
-    }
-  },
-
-  "configurationArguments": {
-    "applicationExtensionKey": "PCOMM_paubox_v2",
-
-    "save": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
-    },
-
-    "validate": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
-    },
-
-    "publish": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
-    },
-
-    "stop": {
-      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
-    }
-  },
-
-  "schema": {
-    "arguments": {
-      "execute": {
-        "inArguments": [
-          {
-            "data": {
-              "dataType": "Object",
-              "direction": "in"
-            }
-          }
-        ],
-        "outArguments": [
-          {
-            "status": {
-              "dataType": "Text",
-              "isNullable": true,
-              "access": "visible",
-              "direction": "out"
-            }
-          }
-        ]
-      }
-    }
-  },
-
-  "userInterfaces": {
-    "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v16/index.html",
-      "height": 400,
-      "width": 500,
-      "fullscreen": false
-    }
+    if (entryInput) entryInput.value = data.apiJourneyEntryName || '';
+    if (templateInput) templateInput.value = data.template_name || '';
+    if (subjectInput) subjectInput.value = data.subject || '';
   }
-}
+
+  function onDone() {
+    activity.arguments = activity.arguments || {};
+    activity.arguments.execute = activity.arguments.execute || {};
+
+    var entryInput = document.getElementById('apiJourneyEntryName');
+    var templateInput = document.getElementById('templateName');
+    var subjectInput = document.getElementById('subject');
+
+    var entryKey = entryInput ? entryInput.value : '';
+    var templateName = templateInput ? templateInput.value : '';
+    var subject = subjectInput ? subjectInput.value : '';
+
+    function ev(field) {
+      return '{{Event.' + entryKey + '.' + field + '}}';
+    }
+
+    var templateValues = {
+      confirmationCode: ev('confirmationCode'),
+      guestId: ev('guestId'),
+      prsProfileId: ev('prsProfileId'),
+      firstName: ev('firstName'),
+      email: ev('email'),
+      phoneNumber: ev('phoneNumber'),
+      address_1: ev('address_1'),
+      address_2: ev('address_2'),
+      city: ev('city'),
+      zip: ev('zip'),
+      state: ev('state'),
+      emailPrereregisterUrl: ev('emailPrereregisterUrl'),
+      smsPrereregisterUrl: ev('smsPrereregisterUrl'),
+      appointmentStatus: ev('appointmentStatus'),
+      appointmentType: ev('appointmentType'),
+      appointmentDateTime: ev('appointmentDateTime'),
+      appointmentTimeZone: ev('appointmentTimeZone'),
+      appointmentEmailOptin: ev('appointmentEmailOptin'),
+      appointmentSMSOptin: ev('appointmentSMSOptin'),
+      apptDeepLink: ev('apptDeepLink'),
+      apptDeepLinkForModify: ev('apptDeepLinkForModify'),
+      apptDeepLinkForCancel: ev('apptDeepLinkForCancel'),
+      paymentOOP: ev('paymentOOP'),
+      reasonForVisit: ev('reasonForVisit'),
+      siteCode: ev('siteCode'),
+      partnerName: ev('partnerName'),
+      eorderAppointment: ev('eorderAppointment'),
+      confirmAppointmentURL: ev('confirmAppointmentURL'),
+      outstandingBalance: ev('outstandingBalance'),
+      calendarLink: ev('calendarLink')
+    };
+
+    activity.arguments.execute.inArguments = [
+      {
+        data: {
+          apiJourneyEntryName: entryKey,
+          template_name: templateName,
+          template_values: JSON.stringify(templateValues),
+          message: {
+            recipients: [ev('email')],
+            headers: {
+              subject: subject,
+              from: 'noreply@pcomm.questdiagnostics.com'
+            },
+            allowNonTLS: false,
+            forceSecureNotification: false
+          }
+        }
+      }
+    ];
+
+    activity.metaData = activity.metaData || {};
+    activity.metaData.isConfigured = true;
+
+    connection.trigger('updateActivity', activity);
+  }
+
+})();
