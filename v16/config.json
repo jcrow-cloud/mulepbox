@@ -40,7 +40,7 @@
   },
 
   "configurationArguments": {
-    "applicationExtensionKey": "PCOMM_paubox_v2",
+    "applicationExtensionKey": "PCOMM_paubox_v16",
 
     "save": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
