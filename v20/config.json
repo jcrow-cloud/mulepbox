@@ -3,15 +3,15 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v19/images/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v20/images/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
 
   "lang": {
     "en-US": {
-      "name": "v19 Paubox Email",
-      "description": "v19 Paubox Journey Builder custom activity"
+      "name": "v20 Paubox Email",
+      "description": "v20 Paubox Journey Builder custom activity"
     }
   },
 
@@ -39,13 +39,13 @@
 
       "securityOptions": {
         "securityType": "securityContext",
-        "securityContextKey": "20260320custom_activity_msauth"
+        "securityContextKey": "20260320custom_activity_pboxv20"
       }
     }
   },
 
   "configurationArguments": {
-    "applicationExtensionKey": "PCOMM_paubox_v19",
+    "applicationExtensionKey": "PCOMM_paubox_v20",
 
     "save": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
@@ -91,7 +91,7 @@
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v19/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/v20/index.html",
       "height": 600,
       "width": 500,
       "fullscreen": false
