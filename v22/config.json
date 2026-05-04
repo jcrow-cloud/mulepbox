@@ -3,15 +3,15 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v14/images/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v22/images/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
 
   "lang": {
     "en-US": {
-      "name": "v14 Paubox Email",
-      "description": "v14 Paubox Journey Builder custom activity"
+      "name": "v22 (v14) Paubox Email",
+      "description": "v22 Paubox Journey Builder custom activity"
     }
   },
 
