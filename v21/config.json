@@ -1,0 +1,100 @@
+{
+  "workflowApiVersion": "1.1",
+  "type": "REST",
+
+  "metaData": {
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v21/images/icon.png",
+    "category": "custom",
+    "configOnDrop": true
+  },
+
+  "lang": {
+    "en-US": {
+      "name": "v21 Paubox Email",
+      "description": "v21 Paubox Journey Builder custom activity"
+    }
+  },
+
+  "arguments": {
+    "execute": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
+      "format": "json",
+
+      "timeout": 30000,
+      "retryCount": 5,
+      "retryDelay": 5000,
+      "concurrentRequests": 5,
+
+      "inArguments": [
+        {
+          "data": {}
+        }
+      ],
+
+      "outArguments": [
+        {
+          "status": "Success"
+        }
+      ],
+
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_pboxv20"
+      }
+    }
+  },
+
+  "configurationArguments": {
+    "applicationExtensionKey": "3288c9b6-36f9-41e7-be86-45e08c6fb1f0",
+
+    "save": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+
+    "validate": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+
+    "publish": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    },
+
+    "stop": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity"
+    }
+  },
+
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [
+          {
+            "data": {
+              "dataType": "Object",
+              "direction": "in"
+            }
+          }
+        ],
+        "outArguments": [
+          {
+            "status": {
+              "dataType": "Text",
+              "isNullable": true,
+              "access": "visible",
+              "direction": "out"
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "userInterfaces": {
+    "configModal": {
+      "url": "https://jcrow-cloud.github.io/mulepbox/v21/index.html",
+      "height": 600,
+      "width": 700,
+      "fullscreen": false
+    }
+  }
+}
