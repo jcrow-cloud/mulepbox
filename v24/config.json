@@ -22,7 +22,11 @@
       "format": "json",
 
       "inArguments": [
-        {}
+        {
+          "data": {
+            
+          }
+        }
       ],
 
       "outArguments": [
@@ -79,10 +83,10 @@
       "execute": {
         "inArguments": [
           {
-            "payload": {
-              "dataType": "Text",
+            "data": {
+              "dataType": "text",
               "isNullable": true,
-              "direction": "in"
+              "direction": "in",
             }
           }
         ],
