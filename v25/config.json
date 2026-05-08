@@ -31,7 +31,7 @@
                 "{{Contact.Email}}"
               ],
               "headers": {
-                "subject": "v 25 test",
+                "subject": "v 25.2 test",
                 "from": "noreply@pcomm.questdiagnostics.com"
               },
               "allowNonTLS": false,
