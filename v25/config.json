@@ -10,7 +10,7 @@
 
   "lang": {
     "en-US": {
-      "name": "Paubox Email – TEST",
+      "name": "V25.2 Paubox Email",
       "description": "TEST MODE – hard-coded recipient"
     }
   },
@@ -22,7 +22,7 @@
       "inArguments": [
         {
           "data": {
-            "template_name": "quest_appt_reminder_v1",
+            "template_name": "SFMC_Appointments_payload",
 
             "template_values": {
               "subscriberKey": "TEST_SUBSCRIBER_001"
@@ -33,7 +33,7 @@
                 "jeannette.crow@gmail.com"
               ],
               "headers": {
-                "subject": "TEST – Paubox Custom Activity",
+                "subject": "TEST V25.2 – Paubox Custom Activity",
                 "from": "noreply@pcomm.questdiagnostics.com"
               },
               "allowNonTLS": false,
@@ -116,7 +116,7 @@
   "userInterfaces": {
     "configModal": {
       "url": "https://jcrow-cloud.github.io/mulepbox/v25/index.html",
-      "height": 300,
+      "height": 600,
       "width": 420,
       "fullscreen": false
     }
