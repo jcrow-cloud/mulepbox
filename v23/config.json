@@ -3,15 +3,15 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v13/images/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v23/images/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
 
   "lang": {
     "en-US": {
-      "name": "v13 Paubox Email",
-      "description": "v13 custom activity calling MuleSoft Paubox"
+      "name": "v23 (13) Paubox Email",
+      "description": "v 23 (v13) custom activity calling MuleSoft Paubox"
     }
   },
 
@@ -33,19 +33,19 @@
 
       "securityOptions": {
         "securityType": "securityContext",
-        "securityContextKey": "20260320custom_activity_msauth"
+        "securityContextKey": "20260320custom_activity_pboxv20"
       }
     }
   },
 
   "configurationArguments": {
-    "applicationExtensionKey": "paubox-test-extension",
+    "applicationExtensionKey": "PCOMM_paubox_v23",
 
     "save": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "securityOptions": {
         "securityType": "securityContext",
-        "securityContextKey": "20260320custom_activity_msauth"
+        "securityContextKey": "20260320custom_activity_pboxv20"
       }
     },
 
@@ -53,7 +53,7 @@
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "securityOptions": {
         "securityType": "securityContext",
-        "securityContextKey": "20260320custom_activity_msauth"
+        "securityContextKey": "20260320custom_activity_pboxv20"
       }
     },
 
@@ -61,7 +61,7 @@
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "securityOptions": {
         "securityType": "securityContext",
-        "securityContextKey": "20260320custom_activity_msauth"
+        "securityContextKey": "20260320custom_activity_pboxv20"
       }
     },
 
@@ -69,7 +69,7 @@
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "securityOptions": {
         "securityType": "securityContext",
-        "securityContextKey": "20260320custom_activity_msauth"
+        "securityContextKey": "20260320custom_activity_pboxv20"
       }
     }
   },
@@ -102,7 +102,7 @@
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v13/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/v23/index.html",
       "height": 400,
       "width": 500,
       "fullscreen": false
