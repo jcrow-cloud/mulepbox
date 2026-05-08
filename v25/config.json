@@ -3,15 +3,15 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v24/images/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v25/images/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
 
   "lang": {
     "en-US": {
-      "name": "v24 Paubox Email",
-      "description": "v 24 custom activity calling MuleSoft Paubox"
+      "name": "v25 Paubox Email",
+      "description": "v 25 custom activity calling MuleSoft Paubox"
     }
   },
 
@@ -24,8 +24,19 @@
       "inArguments": [
         {
           "data": {
-            
-          }
+    "template_name": "quest_appt_reminder_v1",
+    "template_values": "{\"subscriberKey\":\"0039A00000ABC123\"}",
+    "message": {
+      "recipients": [
+        "jeannette.crow@gmail.com"
+      ],
+      "headers": {
+        "subject": "Your upcoming Quest appointment",
+        "from": "noreply@pcomm.questdiagnostics.com"
+      },
+      "allowNonTLS": false,
+      "forceSecureNotification": false
+    }
         }
       ],
 
