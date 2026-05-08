@@ -10,8 +10,8 @@
 
   "lang": {
     "en-US": {
-      "name": "Paubox Email",
-      "description": "Send email via MuleSoft Paubox integration"
+      "name": "Paubox Email – TEST",
+      "description": "TEST MODE – hard-coded recipient"
     }
   },
 
@@ -23,15 +23,17 @@
         {
           "data": {
             "template_name": "quest_appt_reminder_v1",
+
             "template_values": {
-              "subscriberKey": "{{Contact.Key}}"
+              "subscriberKey": "TEST_SUBSCRIBER_001"
             },
+
             "message": {
               "recipients": [
-                "{{Contact.Email}}"
+                "jeannette.crow@gmail.com"
               ],
               "headers": {
-                "subject": "v 25.2 test",
+                "subject": "TEST – Paubox Custom Activity",
                 "from": "noreply@pcomm.questdiagnostics.com"
               },
               "allowNonTLS": false,
@@ -64,7 +66,6 @@
         "securityContextKey": "20260320custom_activity_pboxv20"
       }
     },
-
     "validate": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "securityOptions": {
@@ -72,7 +73,6 @@
         "securityContextKey": "20260320custom_activity_pboxv20"
       }
     },
-
     "publish": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "securityOptions": {
@@ -80,7 +80,6 @@
         "securityContextKey": "20260320custom_activity_pboxv20"
       }
     },
-
     "stop": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
       "securityOptions": {
@@ -117,8 +116,8 @@
   "userInterfaces": {
     "configModal": {
       "url": "https://jcrow-cloud.github.io/mulepbox/v25/index.html",
-      "height": 400,
-      "width": 500,
+      "height": 300,
+      "width": 420,
       "fullscreen": false
     }
   }
