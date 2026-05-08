@@ -10,39 +10,40 @@
 
   "lang": {
     "en-US": {
-      "name": "v25 Paubox Email",
-      "description": "v 25 custom activity calling MuleSoft Paubox"
+      "name": "Paubox Email",
+      "description": "Send email via MuleSoft Paubox integration"
     }
   },
 
   "arguments": {
     "execute": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
-      "verb": "POST",
-      "format": "json",
 
       "inArguments": [
         {
           "data": {
-    "template_name": "quest_appt_reminder_v1",
-    "template_values": "{\"subscriberKey\":\"0039A00000ABC123\"}",
-    "message": {
-      "recipients": [
-        "jeannette.crow@gmail.com"
-      ],
-      "headers": {
-        "subject": "Your upcoming Quest appointment",
-        "from": "noreply@pcomm.questdiagnostics.com"
-      },
-      "allowNonTLS": false,
-      "forceSecureNotification": false
-    }
+            "template_name": "quest_appt_reminder_v1",
+            "template_values": {
+              "subscriberKey": "{{Contact.Key}}"
+            },
+            "message": {
+              "recipients": [
+                "{{Contact.Email}}"
+              ],
+              "headers": {
+                "subject": "v 25 test",
+                "from": "noreply@pcomm.questdiagnostics.com"
+              },
+              "allowNonTLS": false,
+              "forceSecureNotification": false
+            }
+          }
         }
       ],
 
       "outArguments": [
         {
-          "status": "DefaultStatus"
+          "status": "{{response.status}}"
         }
       ],
 
@@ -54,7 +55,7 @@
   },
 
   "configurationArguments": {
-    "applicationExtensionKey": "PCOMM_paubox_v23",
+    "applicationExtensionKey": "PCOMM_paubox_v25",
 
     "save": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
@@ -95,9 +96,8 @@
         "inArguments": [
           {
             "data": {
-              "dataType": "text",
-              "isNullable": true,
-              "direction": "in",
+              "dataType": "Object",
+              "isNullable": true
             }
           }
         ],
@@ -106,8 +106,7 @@
             "status": {
               "dataType": "Text",
               "isNullable": true,
-              "access": "visible",
-              "direction": "out"
+              "access": "visible"
             }
           }
         ]
@@ -117,7 +116,7 @@
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v24/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/v25/index.html",
       "height": 400,
       "width": 500,
       "fullscreen": false
