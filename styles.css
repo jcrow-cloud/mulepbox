@@ -1,0 +1,21 @@
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  margin: 20px;
+}
+
+h2 {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin: 12px 0 4px;
+  font-weight: 600;
+}
+
+input[type="text"] {
+  width: 400px;
+  padding: 6px 8px;
+  font-size: 14px;
+}

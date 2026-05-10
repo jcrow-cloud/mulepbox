@@ -1,0 +1,124 @@
+{
+  "workflowApiVersion": "1.1",
+  "type": "REST",
+
+  "metaData": {
+    "icon": "https://jcrow-cloud.github.io/mulepbox/v25/images/icon.png",
+    "category": "custom",
+    "configOnDrop": true
+  },
+
+  "lang": {
+    "en-US": {
+      "name": "V25.2 Paubox Email",
+      "description": "TEST MODE – hard-coded recipient"
+    }
+  },
+
+  "arguments": {
+    "execute": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/template-email",
+
+      "inArguments": [
+        {
+          "data": {
+            "template_name": "SFMC_Appointments_payload",
+
+            "template_values": {
+              "subscriberKey": "TEST_SUBSCRIBER_001"
+            },
+
+            "message": {
+              "recipients": [
+                "jeannette.crow@gmail.com"
+              ],
+              "headers": {
+                "subject": "TEST V25.2 – Paubox Custom Activity",
+                "from": "noreply@pcomm.questdiagnostics.com"
+              },
+              "allowNonTLS": false,
+              "forceSecureNotification": false
+            }
+          }
+        }
+      ],
+
+      "outArguments": [
+        {
+          "status": "v25dot2_test"
+        }
+      ],
+
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_pboxv20"
+      }
+    }
+  },
+
+  "configurationArguments": {
+    "applicationExtensionKey": "PCOMM_paubox_v25",
+
+    "save": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_pboxv20"
+      }
+    },
+    "validate": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_pboxv20"
+      }
+    },
+    "publish": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_pboxv20"
+      }
+    },
+    "stop": {
+      "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
+      "securityOptions": {
+        "securityType": "securityContext",
+        "securityContextKey": "20260320custom_activity_pboxv20"
+      }
+    }
+  },
+
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [
+          {
+            "data": {
+              "dataType": "Object",
+              "isNullable": true
+            }
+          }
+        ],
+        "outArguments": [
+          {
+            "status": {
+              "dataType": "Text",
+              "isNullable": true,
+              "access": "visible"
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "userInterfaces": {
+    "configModal": {
+      "url": "https://jcrow-cloud.github.io/mulepbox/v25/index.html",
+      "height": 600,
+      "width": 420,
+      "fullscreen": false
+    }
+  }
+}
