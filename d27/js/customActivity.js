@@ -21,7 +21,10 @@
 
     // Read values from form
     var templateInput = document.getElementById('templateName');
+    var subjectInput = document.getElementById('subject');
+
     var templateName = templateInput ? templateInput.value : '';
+    var subject = subjectInput ? subjectInput.value : '';
 
     // Helper for Journey Event binding
     function ev(field) {
@@ -33,18 +36,18 @@
         data: {
           template_name: templateName,
 
-          template_values: {
+          template_values: JSON.stringify({
             subscriberKey: ev('subscriberKey'),
             confirmationCode: ev('confirmationCode'),
             appointmentDateTime: ev('appointmentDateTime')
-          },
+          }),
 
           message: {
             recipients: [
               ev('email')
             ],
             headers: {
-              subject: ev('emailSubject'),
+              subject: subject,
               from: 'noreply@pcomm.questdiagnostics.com'
             },
             allowNonTLS: false,
