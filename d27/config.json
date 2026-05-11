@@ -3,7 +3,7 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/d26/images/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/d27/images/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
@@ -27,7 +27,7 @@
 
       "outArguments": [
         {
-          "status": "v26_dynamic"
+          "status": "Success"
         }
       ],
 
@@ -97,7 +97,7 @@
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/d26/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/d27/index.html",
       "height": 600,
       "width": 420,
       "fullscreen": false
