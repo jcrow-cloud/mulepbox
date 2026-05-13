@@ -3,15 +3,15 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/d28/images/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/d29/images/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
 
   "lang": {
     "en-US": {
-      "name": "d28 Paubox Email",
-      "description": "Dynamic test – version d28"
+      "name": "d29 Paubox Appt Email",
+      "description": "Dynamic test – version d29"
     }
   },
 
@@ -97,7 +97,7 @@
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/d28/index.html",
+      "url": "https://jcrow-cloud.github.io/mulepbox/d29/index.html",
       "height": 500,
       "width": 480,
       "fullscreen": false
