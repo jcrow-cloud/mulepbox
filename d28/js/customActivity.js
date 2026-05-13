@@ -70,13 +70,9 @@
             appointmentEmailOptin: ev('appointmentEmailOptin'),
             apptDeepLinkForModify: ev('apptDeepLinkForModify'),
             apptDeepLinkForCancel: ev('apptDeepLinkForCancel'),
-            inactiveTokens: ev('inactiveTokens'),
-            isApprovedDomain: ev('isApprovedDomain'),
-            dateAdded: ev('dateAdded'),
-            locale: ev('locale'),
-            usedToken: ev('usedToken'),
+                       
             orderDate: ev('orderDate'),
-            reactivatedTokens: ev('reactivatedTokens'),
+            
             pscClosureReason: ev('pscClosureReason')
           }),
 
