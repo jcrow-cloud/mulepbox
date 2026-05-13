@@ -3,15 +3,15 @@
   "type": "REST",
 
   "metaData": {
-    "icon": "https://jcrow-cloud.github.io/mulepbox/v25/images/icon.png",
+    "icon": "https://jcrow-cloud.github.io/mulepbox/d28/images/icon.png",
     "category": "custom",
     "configOnDrop": true
   },
 
   "lang": {
     "en-US": {
-      "name": "V25.2 Paubox Email",
-      "description": "TEST MODE – hard-coded recipient"
+      "name": "d28 Paubox Email",
+      "description": "Dynamic test – version d28"
     }
   },
 
@@ -21,31 +21,13 @@
 
       "inArguments": [
         {
-          "data": {
-            "template_name": "SFMC_Appointments_payload",
-
-            "template_values": {
-              "subscriberKey": "TEST_SUBSCRIBER_001"
-            },
-
-            "message": {
-              "recipients": [
-                "jeannette.crow@gmail.com"
-              ],
-              "headers": {
-                "subject": "TEST V25.2 – Paubox Custom Activity",
-                "from": "noreply@pcomm.questdiagnostics.com"
-              },
-              "allowNonTLS": false,
-              "forceSecureNotification": false
-            }
-          }
+          "data": {}
         }
       ],
 
       "outArguments": [
         {
-          "status": "v25dot2_test"
+          "status": "Success"
         }
       ],
 
@@ -57,7 +39,7 @@
   },
 
   "configurationArguments": {
-    "applicationExtensionKey": "PCOMM_paubox_v25",
+    "applicationExtensionKey": "3f5d0a33-7b16-4cfa-b392-032fdcf0620c",
 
     "save": {
       "url": "https://qeag-qa.questdiagnostics.com/qdx-preferences-xapi-v2/paubox/activity",
@@ -115,9 +97,9 @@
 
   "userInterfaces": {
     "configModal": {
-      "url": "https://jcrow-cloud.github.io/mulepbox/v25/index.html",
-      "height": 600,
-      "width": 420,
+      "url": "https://jcrow-cloud.github.io/mulepbox/d28/index.html",
+      "height": 500,
+      "width": 480,
       "fullscreen": false
     }
   }
