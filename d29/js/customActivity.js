@@ -55,7 +55,7 @@
             appointmentType: ev('appointmentType'),
             appointmentDateTime: ev('appointmentDateTime'),
             appointmentTimeZone: ev('appointmentTimeZone'),
-            appointmentSMSOptin: ev('appointmentSMSOptin'),
+            
             apptDeepLink: ev('apptDeepLink'),
             paymentOOP: ev('paymentOOP'),
             qrCode: ev('qrCode'),
@@ -64,15 +64,15 @@
             partnerName: ev('partnerName'),
             eorderAppointment: ev('eorderAppointment'),
             confirmAppointmentURL: ev('confirmAppointmentURL'),
-            appointmentConfirmedFlag: ev('appointmentConfirmedFlag'),
+           
             outstandingBalance: ev('outstandingBalance'),
             calendarLink: ev('calendarLink'),
-            appointmentEmailOptin: ev('appointmentEmailOptin'),
+            
             apptDeepLinkForModify: ev('apptDeepLinkForModify'),
             apptDeepLinkForCancel: ev('apptDeepLinkForCancel'),
                        
             orderDate: ev('orderDate'),
-            
+            landmarks: ev('landmarks'),
             pscClosureReason: ev('pscClosureReason')
           }),
 
