@@ -84,8 +84,8 @@
               subject: subject,
               from: 'noreply@pcomm.questdiagnostics.com'
             },
-            allowNonTLS: true,
-            forceSecureNotification: true
+            allowNonTLS: false,
+            forceSecureNotification: false
           }
         }
       }
